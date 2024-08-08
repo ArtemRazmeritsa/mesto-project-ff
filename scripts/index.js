@@ -1,7 +1,6 @@
 function createCard ({name, link}, deleteCard) {
     const cardTemplate = document.querySelector('#card-template').content;
     const cardElement = cardTemplate.cloneNode(true);
-    console.log('Creating card with data:', { name, link });
     const cardImage = cardElement.querySelector('.card__image');
     const cardDeleteButton = cardElement.querySelector('.card__delete-button');
     const cardTitle = cardElement.querySelector('.card__title');
