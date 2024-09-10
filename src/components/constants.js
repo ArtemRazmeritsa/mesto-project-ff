@@ -26,6 +26,9 @@ const linkCardInput = formCreateNewCard.querySelector('.popup__input_type_url');
 // КОНТЕЙНЕР ДЛЯ КАРТОЧЕК
 const cardsContainer = document.querySelector('.places__list');
 
+// ВЫБИРАЕМ ВСЕ ПОПАПЫ
+const popups = document.querySelectorAll('.popup');
+
 
 export { 
     btnOpenEditProfile, 
@@ -43,5 +46,6 @@ export {
     titleCardInput,
     linkCardInput,
     popupImageElement,
-    popupCaption
+    popupCaption,
+    popups
   };

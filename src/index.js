@@ -18,7 +18,8 @@ import {
     titleCardInput,
     linkCardInput,
     popupImageElement,
-    popupCaption
+    popupCaption,
+    popups
 } from './components/constants.js';
 
 
@@ -41,12 +42,12 @@ function handleProfileEditForm(evt) {
     
     closePopup(popupEditProfile);
 }
+
 // ОТКРЫТЬ ПОПАП ПРОФИЛЯ
 btnOpenEditProfile.addEventListener('click', openEditProfilePopup);
 
 // СОХРАНИТЬ И ЗАКРЫТЬ ПОПАП ПРОФИЛЯ
 formProfileEdit.addEventListener('submit', handleProfileEditForm);
-
 
 // ДОБАВИТЬ КАРТОЧКУ
 function handleCreateNewCard (evt) {
@@ -81,8 +82,6 @@ function openImgPopup(name, link) {
 }
 
 // ЗАКРЫТЬ ПОПАПЫ НА КНОПКУ ИЛИ ОВЕРЛЕЙ
-const popups = document.querySelectorAll('.popup');
-
 popups.forEach((popup) => {
  popup.addEventListener('click', (evt) => {
   if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')){
