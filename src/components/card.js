@@ -1,7 +1,8 @@
 
 // СОЗДАЕМ КАРТОЧКУ
+const cardTemplate = document.querySelector('#card-template').content;
+
 export function createCard ({name, link}, deleteCard, likeHandler, openImgPopup) {
-    const cardTemplate = document.querySelector('#card-template').content;
     const cardElement = cardTemplate.cloneNode(true);
     const cardImage = cardElement.querySelector('.card__image');
     const cardDeleteButton = cardElement.querySelector('.card__delete-button');
@@ -27,16 +28,6 @@ export function deleteCard(evt) {
     const eventTarget = evt.target;
     eventTarget.closest('.card').remove()
 }
-
-// ВЫВОДИМ КАРТОЧКУ НА СТРАНИЦУ
-export function renderCards(cards, openImgPopup) {
-    const cardsContainer = document.querySelector('.places__list');
-
-    cards.forEach(cardData => {
-        const cardElement = createCard(cardData, deleteCard, likeHandler, openImgPopup);
-        cardsContainer.appendChild(cardElement);
-    });
-};
 
 // ЛАЙК КАРТОЧКИ
 export function likeHandler (evt) {
