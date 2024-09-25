@@ -1,14 +1,25 @@
+import {clearValidation, validationConfig} from './validation.js';
 
 // ОТКРЫТЬ ПОПАП
 export function openPopup(popupElement) {
     popupElement.classList.add('popup_is-opened');
     document.addEventListener('keydown', handleEscClose);
+
+    if(!popupElement.classList.contains('popup_type_edit')) {
+        const inputList = Array.from(popupElement.querySelectorAll(validationConfig.inputElement));
+
+        inputList.forEach((inputElement) => {
+            inputElement.value = '';
+        })
+}
 }
 
 // ЗАКРЫТЬ ПОПАП
 export function closePopup(popupElement) {
     popupElement.classList.remove('popup_is-opened');
     document.removeEventListener('keydown', handleEscClose);
+    
+    clearValidation(popupElement, validationConfig);
 }
 
 // ЗАКРЫТЬ ПО НАЖАТИЮ Escape
@@ -18,7 +29,5 @@ function handleEscClose(evt) {
         closePopup(popupElement);
     }
 }
-
-
 
 
