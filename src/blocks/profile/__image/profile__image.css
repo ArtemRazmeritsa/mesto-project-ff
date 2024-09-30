@@ -10,7 +10,7 @@
 }
 
 .profile__image::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -27,17 +27,17 @@
 }
 
 .profile__image::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 26px;
   height: 26px;
-  background-image: url('../../../images/edit-icon.svg');
+  background-image: url("../../../images/edit-icon.svg");
   background-size: contain;
   background-repeat: no-repeat;
   transform: translate(-50%, -50%);
-  opacity: 0; 
+  opacity: 0;
   transition: opacity 0.3s;
 }
 
