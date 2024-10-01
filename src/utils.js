@@ -10,7 +10,7 @@ export function renderLoading(
   isLoading,
   button,
   buttonText = "Сохранить",
-  loadingText = "Сохранение...",
+  loadingText = "Сохранение..."
 ) {
   if (isLoading) {
     button.textContent = loadingText;

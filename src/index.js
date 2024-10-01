@@ -26,7 +26,6 @@ import {
   profileDescription,
   nameProfileInput,
   aboutProfileInput,
-  buttonSubmitProfile,
   titleCardInput,
   linkCardInput,
   popupImageElement,
@@ -44,7 +43,6 @@ import {
 function openEditProfilePopup() {
   nameProfileInput.value = profileTitle.textContent;
   aboutProfileInput.value = profileDescription.textContent;
-  buttonSubmitProfile.classList.add(validationConfig.inactiveButtonClass);
   openPopup(popupEditProfile);
 }
 
@@ -53,7 +51,7 @@ function handleProfileEditForm(evt) {
   function makeRequest() {
     return saveNewUserData(
       nameProfileInput.value,
-      aboutProfileInput.value,
+      aboutProfileInput.value
     ).then((userData) => {
       profileTitle.textContent = userData.name;
       profileDescription.textContent = userData.about;
@@ -109,7 +107,7 @@ function handleCreateNewCard(evt) {
         likeHandler,
         openImgPopup,
         currentUserId,
-        openPopupConfirmDelete,
+        openPopupConfirmDelete
       );
 
       cardsContainer.prepend(newCard);
@@ -191,7 +189,7 @@ function likeHandler(
   likes,
   cardLikeDescription,
   cardLikeButton,
-  currentUserId,
+  currentUserId
 ) {
   let isLikedByCurrentUser = likes.some((like) => like._id === currentUserId);
 
@@ -206,7 +204,7 @@ function likeHandler(
 
       cardLikeDescription.textContent = res.likes.length;
       isLikedByCurrentUser = res.likes.some(
-        (like) => like._id === currentUserId,
+        (like) => like._id === currentUserId
       );
 
       if (isLikedByCurrentUser) {
@@ -245,7 +243,7 @@ export function renderCards(
   cards,
   openImgPopup,
   currentUserId,
-  openPopupConfirmDelete,
+  openPopupConfirmDelete
 ) {
   cards.forEach((cardData) => {
     const cardElement = createCard(
@@ -259,7 +257,7 @@ export function renderCards(
       likeHandler,
       openImgPopup,
       currentUserId,
-      openPopupConfirmDelete,
+      openPopupConfirmDelete
     );
 
     cardsContainer.appendChild(cardElement);

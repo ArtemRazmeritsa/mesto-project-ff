@@ -6,7 +6,7 @@ export function createCard(
   likeHandler,
   openImgPopup,
   currentUserId,
-  openPopupConfirmDelete,
+  openPopupConfirmDelete
 ) {
   const cardElement = cardTemplate.cloneNode(true).firstElementChild;
   const cardImage = cardElement.querySelector(".card__image");
@@ -14,7 +14,7 @@ export function createCard(
   const cardTitle = cardElement.querySelector(".card__title");
   const cardLikeButton = cardElement.querySelector(".card__like-button");
   const cardLikeDescription = cardElement.querySelector(
-    ".card__like-description",
+    ".card__like-description"
   );
 
   cardImage.src = cardData.link;
@@ -27,12 +27,12 @@ export function createCard(
     cardDeleteButton.classList.add("card__delete-button_inactive");
   } else {
     cardDeleteButton.addEventListener("click", () =>
-      openPopupConfirmDelete(cardElement, cardData.cardId),
+      openPopupConfirmDelete(cardElement, cardData.cardId)
     );
   }
 
   const isLikedByCurrentUser = cardData.likes.some(
-    (like) => like._id === currentUserId,
+    (like) => like._id === currentUserId
   );
   if (isLikedByCurrentUser) {
     cardLikeButton.classList.add("card__like-button_is-active");
@@ -44,11 +44,11 @@ export function createCard(
       cardData.likes,
       cardLikeDescription,
       cardLikeButton,
-      currentUserId,
-    ),
+      currentUserId
+    )
   );
   cardImage.addEventListener("click", () =>
-    openImgPopup(cardData.name, cardData.link),
+    openImgPopup(cardData.name, cardData.link)
   );
 
   return cardElement;

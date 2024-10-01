@@ -13,7 +13,7 @@ function showInputError(
   inputElement,
   errorMessage,
   inputErrorClass,
-  errorClass,
+  errorClass
 ) {
   const errorElement = popupElement.querySelector(`.${inputElement.id}-error`);
 
@@ -27,7 +27,7 @@ function hideInputError(
   popupElement,
   inputElement,
   inputErrorClass,
-  errorClass,
+  errorClass
 ) {
   const errorElement = popupElement.querySelector(`.${inputElement.id}-error`);
 
@@ -41,7 +41,7 @@ export function isValid(
   popupElement,
   inputElement,
   inputErrorClass,
-  errorClass,
+  errorClass
 ) {
   if (inputElement.validity.patternMismatch) {
     inputElement.setCustomValidity(inputElement.dataset.errorMessage);
@@ -55,7 +55,7 @@ export function isValid(
       inputElement,
       inputElement.validationMessage,
       inputErrorClass,
-      errorClass,
+      errorClass
     );
   } else {
     hideInputError(popupElement, inputElement, inputErrorClass, errorClass);
@@ -65,10 +65,10 @@ export function isValid(
 // ВАЛИДАЦИЯ ВСЕХ ИНПУТОВ В ФОРМЕ
 function setEventListeners(popupElement, config) {
   const inputList = Array.from(
-    popupElement.querySelectorAll(config.inputElement),
+    popupElement.querySelectorAll(config.inputElement)
   );
   const popupSubmitButton = popupElement.querySelector(
-    config.submitButtonSelector,
+    config.submitButtonSelector
   );
 
   toggleButtonState(inputList, popupSubmitButton, config.inactiveButtonClass);
@@ -79,14 +79,18 @@ function setEventListeners(popupElement, config) {
         popupElement,
         inputElement,
         config.inputErrorClass,
-        config.errorClass,
+        config.errorClass
       );
       toggleButtonState(
         inputList,
         popupSubmitButton,
-        config.inactiveButtonClass,
+        config.inactiveButtonClass
       );
     });
+  });
+
+  popupElement.addEventListener("reset", () => {
+    disableButton(popupSubmitButton, config.inactiveButtonClass);
   });
 }
 
@@ -97,41 +101,31 @@ function hasInvalidInput(inputList) {
   });
 }
 
+// СДЕЛАТЬ КНОПКУ ОТПРАВКИ НЕАКТИВНОЙ
+function disableButton(buttonElement, inactiveButtonClass) {
+  buttonElement.disabled = true;
+  buttonElement.classList.add(inactiveButtonClass);
+}
+
+// СДЕЛАТЬ КНОПКУ ОТПРАВКИ АКТИВНОЙ
+function enableButton(buttonElement, inactiveButtonClass) {
+  buttonElement.disabled = false;
+  buttonElement.classList.remove(inactiveButtonClass);
+}
+
 // УПРАВЛЕНИЕ СОСТОЯНИЯ КНОПКИ ОТПРАВКИ ФОРМЫ
 export function toggleButtonState(
   inputList,
   buttonElement,
-  inactiveButtonClass,
+  inactiveButtonClass
 ) {
   if (buttonElement) {
     if (hasInvalidInput(inputList)) {
-      buttonElement.disabled = true;
-      buttonElement.classList.add(inactiveButtonClass);
+      disableButton(buttonElement, inactiveButtonClass);
     } else {
-      buttonElement.disabled = false;
-      buttonElement.classList.remove(inactiveButtonClass);
+      enableButton(buttonElement, inactiveButtonClass);
     }
   }
-}
-
-// УДАЛИТЬ ОШИБКИ И СДЕЛАТЬ КНОПКУ ОТПРАВКИ ФОРМЫ НЕАКТИВНОЙ ПРИ ОТКРЫТИИ
-export function clearValidation(popupElement, config) {
-  const inputList = Array.from(
-    popupElement.querySelectorAll(config.inputElement),
-  );
-  const popupSubmitButton = popupElement.querySelector(
-    config.submitButtonSelector,
-  );
-
-  inputList.forEach((inputElement) => {
-    hideInputError(
-      popupElement,
-      inputElement,
-      config.inputErrorClass,
-      config.errorClass,
-    );
-  });
-  toggleButtonState(inputList, popupSubmitButton, config.inactiveButtonClass);
 }
 
 // ВАЛИДАЦИЯ ВСЕХ ФОРМ

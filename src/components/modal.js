@@ -1,5 +1,3 @@
-import { clearValidation, validationConfig } from "./validation.js";
-
 // ОТКРЫТЬ ПОПАП
 export function openPopup(popupElement) {
   popupElement.classList.add("popup_is-opened");
@@ -10,14 +8,12 @@ export function openPopup(popupElement) {
 export function closePopup(popupElement) {
   popupElement.classList.remove("popup_is-opened");
   document.removeEventListener("keydown", handleEscClose);
-
-  clearValidation(popupElement, validationConfig);
 }
 
 // ЗАКРЫТЬ ПО НАЖАТИЮ Escape
 function handleEscClose(evt) {
-  const popupElement = document.querySelector(".popup_is-opened");
   if (evt.key === "Escape") {
+    const popupElement = document.querySelector(".popup_is-opened");
     closePopup(popupElement);
   }
 }

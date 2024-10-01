@@ -24,32 +24,23 @@ const buttonConfirmDelete = document.querySelector(".popup__confirm_button");
 // ФОРМА ПРОФИЛЯ
 const formProfileEdit = document.forms["edit-profile"];
 const nameProfileInput = formProfileEdit.querySelector(
-  ".popup__input_type_name",
+  ".popup__input_type_name"
 );
 const aboutProfileInput = formProfileEdit.querySelector(
-  ".popup__input_type_description",
-);
-const buttonSubmitProfile = formProfileEdit.querySelector(
-  ".popup__button_edit-profile",
+  ".popup__input_type_description"
 );
 
 // ФОРМА КАРТОЧКИ
 const formCreateNewCard = document.forms["new-place"];
 const titleCardInput = formCreateNewCard.querySelector(
-  ".popup__input_type_card-name",
+  ".popup__input_type_card-name"
 );
 const linkCardInput = formCreateNewCard.querySelector(".popup__input_type_url");
-const buttonAddNewCard = formCreateNewCard.querySelector(
-  ".popup__button_add-new-card",
-);
 
 // ФОРМА ИЗМЕНЕНИЯ АВАТАРА
 const formCreateNewAvatar = document.forms["new-avatar"];
 const urlAvatar = formCreateNewAvatar.querySelector(
-  ".popup__input_type_avatar_url",
-);
-const buttonAvatarSubmit = formCreateNewAvatar.querySelector(
-  ".popup__button_new-avatar",
+  ".popup__input_type_avatar_url"
 );
 
 // КОНТЕЙНЕР ДЛЯ КАРТОЧЕК
@@ -71,7 +62,6 @@ export {
   profileDescription,
   nameProfileInput,
   aboutProfileInput,
-  buttonSubmitProfile,
   titleCardInput,
   linkCardInput,
   popupImageElement,
